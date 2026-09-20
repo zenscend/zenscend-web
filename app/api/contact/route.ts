@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
 
     const { data, error } = await resend.emails.send({
       // Swap to noreply@zenscend.co once the domain is verified in Resend.
-      from: "Zenscend Contact Form <onboarding@resend.dev>",
+      from: "Zenscend Contact Form <noreply@zenscend.co>",
       to: ["info@zenscend.co"],
       replyTo: email,
       subject: `New enquiry from ${name}`,

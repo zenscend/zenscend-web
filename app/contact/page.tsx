@@ -114,14 +114,16 @@ export default function Contact() {
         <div className="flex flex-col gap-7 border border-rule-light bg-white p-6 md:p-12">
           {state === "sent" ? (
             <div role="status" className="flex flex-col gap-5 py-6">
+              {/* The block sits on the bottom tread, not the top one: sending the
+                  message is step one, with the climb still ahead. */}
               <svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true">
                 <polyline
-                  points="1,55 1,41 15,41 15,27 29,27 29,13 41,13"
+                  points="1,55 1,41 15,41 15,27 29,27 29,13 43,13 43,1 55,1"
                   fill="none"
                   stroke="#0C0C0C"
                   strokeWidth="1.5"
                 />
-                <rect x="41" y="1" width="14" height="14" fill="#FF4632" />
+                <rect x="1" y="41" width="14" height="14" fill="#FF4632" />
               </svg>
               <div className="text-[32px] font-medium tracking-[-0.03em]">
                 Thank you. That&apos;s step one.

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
+import { IntroScript } from "@/components/intro";
 import { Footer, Nav } from "@/components/site-chrome";
 import "./globals.css";
 
@@ -29,8 +30,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    // The intro script stamps data-zs-intro on the root before React hydrates.
+    <html lang="en" suppressHydrationWarning>
       <body className={`${archivo.variable} ${plexMono.variable} font-sans`}>
+        <IntroScript />
         <Nav />
         {children}
         <Footer />

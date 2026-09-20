@@ -90,18 +90,33 @@ textarea:focus {
    Timeline: climb 0-1.0s, mark 1.0-1.25s, stairs out 1.25-1.5s, pan 1.5-1.72s,
    wordmark 1.72-2.15s, flight 2.15-2.8s, curtain 2.55-2.95s.                    */
 
-/* Set by the inline script when the intro should not play: reduced motion, a
-   session that has already seen it, or the viewer skipping it. */
-[data-zs-intro="off"] .intro {
+/* Hidden unless the inline script has just opted this document in, and it clears the
+   flag the moment the intro finishes. Playing is therefore never the resting state,
+   so re-mounting the overlay — a client-side navigation back to the home route, a
+   dev Fast Refresh — cannot replay it.
+
+   "armed" is the curtain up with every animation held at frame zero. The script only
+   promotes it to "play" once the overlay has actually painted, because a CSS
+   animation starts when its styles apply, not when the viewer first sees it: on a
+   cold load the first second was being spent behind an unpainted page, so the climb
+   was over before anything appeared. */
+.intro {
   display: none;
 }
 
-.intro {
+[data-zs-intro="armed"] .intro,
+[data-zs-intro="play"] .intro {
+  display: block;
   position: fixed;
   inset: 0;
   z-index: 60;
   pointer-events: none;
   animation: zs-done 0.01s linear 3s forwards;
+}
+
+[data-zs-intro="armed"] .intro,
+[data-zs-intro="armed"] .intro * {
+  animation-play-state: paused;
 }
 
 /* Lifts late and fast: the logo has to be most of the way to the corner before the
