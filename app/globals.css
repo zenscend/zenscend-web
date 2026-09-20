@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  /* Values replicated from the Main.dc.html design mockup. */
+  --color-ink: #0c0c0c;
+  --color-paper: #f5f4f1;
+  --color-paper-2: #efede8;
+  --color-paper-3: #e2dfd8;
+  --color-accent: #ff4632;
+  --color-on-accent: #ffffff;
+  --color-whatsapp: #25d366;
+
+  /* text ramp on ink */
+  --color-bright: #ffffff;
+  --color-mute: #bdbdbd;
+  --color-dim: #8c8c8c;
+  --color-ghost: #7a7a7a;
+
+  /* rules on ink */
+  --color-rule-nav: #1f1f1f;
+  --color-rule-dark: #262626;
+  --color-rule-grid: #232323;
+  --color-rule-button: #3a3a3a;
+
+  /* on paper */
+  --color-body: #4a4a4a;
+  --color-label: #5e5e5e;
+  --color-rule-white: #e3e1dc;
+  --color-rule-light: #d9d7d1;
+  --color-rule-edge: #c9c6bf;
+
+  --font-sans: var(--font-archivo), sans-serif;
+  --font-mono: var(--font-plex-mono), monospace;
+
+  /* The design rounds nothing but buttons, which opt in with rounded-sm. */
+  --radius-sm: 2px;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+input:focus,
+textarea:focus {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 1px;
+}
+
+/* The mockup's three display sizes — 64px, 56px, 52px — scaled down for narrow
+   screens rather than allowed to overflow. */
+.display {
+  font-size: clamp(2.25rem, 6vw, 4rem);
+  line-height: 1.04;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+}
+
+.display-md {
+  font-size: clamp(2.125rem, 5.2vw, 3.5rem);
+  line-height: 1.08;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.display-sm {
+  font-size: clamp(2rem, 4.8vw, 3.25rem);
+  line-height: 1.08;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
