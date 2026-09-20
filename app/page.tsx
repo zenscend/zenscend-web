@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Intro } from "@/components/intro";
 
 const starts = [
   ["A · From zero", "You have a problem and an idea to solve it, but nothing built yet."],
@@ -89,6 +90,7 @@ const steps = [
 export default function Home() {
   return (
     <main className="bg-paper">
+      <Intro />
       {/* HERO */}
       <section
         id="top"
@@ -167,7 +169,7 @@ export default function Home() {
         id="about"
         className="grid grid-cols-1 gap-x-6 gap-y-12 px-5 pt-24 pb-20 md:px-20 lg:grid-cols-12 lg:gap-y-[72px] lg:pt-36 lg:pb-32"
       >
-        <div className="eyebrow text-label lg:col-span-5">01 — Where you start</div>
+        <div className="eyebrow text-label lg:col-span-5">01: Where you start</div>
         <div className="flex flex-col gap-6 lg:col-span-7">
           <h2 className="display-sm">Every problem starts somewhere.</h2>
           <p className="max-w-[620px] text-[19px]/[1.6] text-body">
@@ -199,7 +201,7 @@ export default function Home() {
         className="flex flex-col gap-12 border-y border-rule-white bg-white px-5 py-20 md:px-20 lg:gap-[72px] lg:py-32"
       >
         <div className="grid grid-cols-1 gap-x-6 gap-y-6 lg:grid-cols-12">
-          <div className="eyebrow text-label lg:col-span-5">02 — What we do</div>
+          <div className="eyebrow text-label lg:col-span-5">02: What we do</div>
           <h2 className="display-sm lg:col-span-7">Whatever it runs on, we build it.</h2>
         </div>
         <div className="grid border border-rule-white lg:grid-cols-3">
@@ -232,7 +234,7 @@ export default function Home() {
       {/* PROCESS */}
       <section id="process" className="flex flex-col gap-12 px-5 pt-20 md:px-20 lg:gap-20 lg:pt-36">
         <div className="grid grid-cols-1 gap-x-6 gap-y-6 lg:grid-cols-12">
-          <div className="eyebrow text-label lg:col-span-5">03 — How we work</div>
+          <div className="eyebrow text-label lg:col-span-5">03: How we work</div>
           <div className="flex flex-col gap-6 lg:col-span-7">
             <h2 className="display-sm">One calm step at a time.</h2>
             <p className="max-w-[600px] text-[19px]/[1.6] text-body">
@@ -263,7 +265,7 @@ export default function Home() {
         id="contact"
         className="grid grid-cols-1 gap-x-6 gap-y-8 px-5 py-20 md:px-20 lg:grid-cols-12 lg:gap-y-14 lg:py-36"
       >
-        <div className="eyebrow text-label lg:col-span-5">04 — Start here</div>
+        <div className="eyebrow text-label lg:col-span-5">04: Start here</div>
         <div className="flex flex-col gap-8 lg:col-span-7">
           <h2 className="display">Tell us the problem you need solved.</h2>
           <p className="max-w-[580px] text-[19px]/[1.6] text-body">

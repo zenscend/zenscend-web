@@ -77,3 +77,174 @@ textarea:focus {
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+
+/* ---- First-load intro -------------------------------------------------------
+   Geometry in the lockup's local px (it is 160 x 21.5, the nav logo's size): the Z
+   mark is a 21.5px square at local 0,0, the staircase hangs left and below across
+   5 columns of 21.5, and the wordmark runs right to 160. Those two never fit on
+   screen together, so the lockup holds the staircase centred, pans to centre the
+   assembled logo once the stairs are gone, then collapses to the nav corner.
+   It ends on transform:none at the real nav logo's coordinates, so the landing is
+   exact rather than approximate.
+
+   Timeline: climb 0-1.0s, mark 1.0-1.25s, stairs out 1.25-1.5s, pan 1.5-1.72s,
+   wordmark 1.72-2.15s, flight 2.15-2.8s, curtain 2.55-2.95s.                    */
+
+/* Set by the inline script when the intro should not play: reduced motion, a
+   session that has already seen it, or the viewer skipping it. */
+[data-zs-intro="off"] .intro {
+  display: none;
+}
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  animation: zs-done 0.01s linear 3s forwards;
+}
+
+/* Lifts late and fast: the logo has to be most of the way to the corner before the
+   page shows through, or it and the real nav logo are both on screen at once. */
+.intro-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--color-ink);
+  animation: zs-curtain 0.4s ease-in 2.55s forwards;
+}
+
+.intro-lockup {
+  --zs-left: 20px;
+  --zs-scale: 2.2;
+  position: absolute;
+  left: var(--zs-left);
+  top: 27.25px; /* (76 nav - 21.5 logo) / 2 */
+  width: 160px;
+  height: 21.5px;
+  transform-origin: 0 0;
+  animation: zs-fly 2.8s linear both;
+}
+
+@media (min-width: 768px) {
+  .intro-lockup {
+    --zs-left: 80px;
+    --zs-scale: 4.5;
+  }
+}
+
+.intro-stairs {
+  position: absolute;
+  left: -86px;
+  top: 0;
+  overflow: visible;
+  animation: zs-fade-out 0.25s ease-out 1.25s forwards;
+}
+
+.intro-block {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 21.5px;
+  height: 21.5px;
+  background: var(--color-bright);
+  animation:
+    zs-climb 1s ease-in-out forwards,
+    zs-fade-out 0.25s ease-in 1s forwards;
+}
+
+/* The wipe is an overflow window widening from the mark to the full lockup, not a
+   clip-path: clip-path does not apply to an SVG <g>, and on the <svg> the minifier
+   collapses the end keyframe to inset(0), which Chrome cannot interpolate against a
+   four-value inset and drops the animation. The closed width is the element's own
+   default rather than a backwards fill, which was not being honoured here. */
+.intro-logo-clip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 22px;
+  height: 21.5px;
+  overflow: hidden;
+  animation: zs-word 0.43s cubic-bezier(0.4, 0, 0.2, 1) 1.72s forwards;
+}
+
+.intro-logo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 160px;
+  height: 21.5px;
+  /* The paths fill with currentColor and body's colour is ink, so without this the
+     wordmark renders black on black. The mark overrides it per-keyframe. */
+  color: var(--color-bright);
+}
+
+/* Orange on arrival, white by the time it lands on the real logo. */
+.intro-mark {
+  animation: zs-mark 1.65s linear 1s both;
+}
+
+/* Four rises and four runs, each easing into a brief hold on the tread. */
+@keyframes zs-climb {
+  0% { transform: translate(-86px, 86px); }
+  9%, 12.5% { transform: translate(-86px, 64.5px); }
+  21.5%, 25% { transform: translate(-64.5px, 64.5px); }
+  34%, 37.5% { transform: translate(-64.5px, 43px); }
+  46.5%, 50% { transform: translate(-43px, 43px); }
+  59%, 62.5% { transform: translate(-43px, 21.5px); }
+  71.5%, 75% { transform: translate(-21.5px, 21.5px); }
+  84%, 87.5% { transform: translate(-21.5px, 0); }
+  96.5%, 100% { transform: translate(0, 0); }
+}
+
+@keyframes zs-fade-out {
+  to { opacity: 0; }
+}
+
+@keyframes zs-mark {
+  0% { opacity: 0; fill: var(--color-accent); }
+  15% { opacity: 1; fill: var(--color-accent); }
+  70% { fill: var(--color-accent); }
+  100% { opacity: 1; fill: var(--color-bright); }
+}
+
+@keyframes zs-word {
+  from { width: 22px; }
+  to { width: 160px; }
+}
+
+/* 0-53.6% staircase centred · 61.4-76.8% logo centred · then to the nav corner.
+   The per-keyframe timing functions ease the pan and the flight; the animation's
+   own linear only governs the holds.
+
+   At scale S with the lockup's left edge at L: the staircase's local centre is
+   (-32.25, 53.75) and the assembled logo's is (80, 10.75), so centring either is
+   translate(50vw - L - centreX*S, 50vh - 27.25 - centreY*S). */
+@keyframes zs-fly {
+  0%,
+  53.6% {
+    transform: translate(
+        calc(50vw - var(--zs-left) + 32.25px * var(--zs-scale)),
+        calc(50vh - 27.25px - 53.75px * var(--zs-scale))
+      )
+      scale(var(--zs-scale));
+    animation-timing-function: cubic-bezier(0.5, 0, 0.2, 1);
+  }
+  61.4%,
+  76.8% {
+    transform: translate(
+        calc(50vw - var(--zs-left) - 80px * var(--zs-scale)),
+        calc(50vh - 27.25px - 10.75px * var(--zs-scale))
+      )
+      scale(var(--zs-scale));
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  100% { transform: none; }
+}
+
+@keyframes zs-curtain {
+  to { opacity: 0; }
+}
+
+@keyframes zs-done {
+  to { visibility: hidden; }
+}

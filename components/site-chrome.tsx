@@ -1,27 +1,14 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Logo } from "@/components/logo";
 
 const links = [
   { href: "/services", label: "Services" },
   { href: "/#about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
-
-function Logo() {
-  return (
-    <Image
-      src="/zenscend-logo.svg"
-      alt="Zenscend"
-      width={148}
-      height={20}
-      priority
-      className="h-5 w-[148px]"
-    />
-  );
-}
 
 export function Nav() {
   const pathname = usePathname();
@@ -33,7 +20,7 @@ export function Nav() {
         aria-label="Zenscend home"
         className="flex items-center transition-opacity hover:opacity-75"
       >
-        <Logo />
+        <Logo className="h-[21.5px] w-40 text-bright" />
       </Link>
       <nav className="flex items-center gap-10 text-[15px] text-mute">
         {links.map((l) => {
@@ -67,7 +54,7 @@ export function Footer() {
     <footer className="flex flex-col justify-between gap-12 bg-ink px-5 pt-16 pb-12 text-dim md:px-20">
       <div className="flex flex-col items-start justify-between gap-8 md:flex-row">
         <div className="flex flex-col gap-5">
-          <Logo />
+          <Logo className="h-[21.5px] w-40 text-bright" />
           <span className="eyebrow">Innovate · Elevate · Streamline</span>
         </div>
         <nav className="flex flex-wrap gap-6 text-[15px] text-mute md:gap-10">
@@ -84,7 +71,7 @@ export function Footer() {
       </div>
       <div className="flex flex-col justify-between gap-2 border-t border-rule-dark pt-6 text-[13px] md:flex-row">
         <span>© 2026 Zenscend Tech Solutions</span>
-        <span>Calm systems. Rising business.</span>
+        {/* <span>Calm systems. Rising business.</span> */}
       </div>
     </footer>
   );

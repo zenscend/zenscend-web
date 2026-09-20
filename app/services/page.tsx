@@ -124,7 +124,7 @@ export default function Services() {
       {/* FOUR WAYS IN */}
       <section className="flex flex-col gap-12 px-5 py-20 md:px-20 lg:gap-16 lg:pt-32 lg:pb-28">
         <div className="grid grid-cols-1 gap-x-6 gap-y-6 lg:grid-cols-12">
-          <div className="eyebrow text-label lg:col-span-5">01 — What we do</div>
+          <div className="eyebrow text-label lg:col-span-5">01: What we do</div>
           <h2 className="display-sm lg:col-span-7">Four ways in.</h2>
         </div>
 
@@ -180,7 +180,7 @@ export default function Services() {
       {/* HOW A PROJECT RUNS */}
       <section className="flex flex-col gap-12 border-t border-rule-white bg-white px-5 pt-20 md:px-20 lg:gap-[72px] lg:pt-32">
         <div className="grid grid-cols-1 gap-x-6 gap-y-6 lg:grid-cols-12">
-          <div className="eyebrow text-label lg:col-span-5">02 — How a project runs</div>
+          <div className="eyebrow text-label lg:col-span-5">02: How a project runs</div>
           <div className="flex flex-col gap-6 lg:col-span-7">
             <h2 className="display-sm">From first message to launch.</h2>
             <p className="max-w-[600px] text-[19px]/[1.6] text-body">
@@ -204,7 +204,7 @@ export default function Services() {
 
       {/* PAYING FOR THE WORK */}
       <section className="grid grid-cols-1 gap-x-6 gap-y-10 bg-ink px-5 py-20 text-bright md:px-20 lg:grid-cols-12 lg:gap-y-16 lg:py-32">
-        <div className="eyebrow text-dim lg:col-span-5">03 — Paying for the work</div>
+        <div className="eyebrow text-dim lg:col-span-5">03: Paying for the work</div>
         <div className="flex flex-col gap-6 lg:col-span-7">
           <h2 className="display-sm">You pay as the work progresses.</h2>
           <p className="max-w-[600px] text-[19px]/[1.6] text-mute">
@@ -251,7 +251,7 @@ export default function Services() {
 
       {/* CTA */}
       <section className="grid grid-cols-1 gap-x-6 gap-y-8 px-5 py-20 md:px-20 lg:grid-cols-12 lg:py-32">
-        <div className="eyebrow text-label lg:col-span-5">04 — Start here</div>
+        <div className="eyebrow text-label lg:col-span-5">04: Start here</div>
         <div className="flex flex-col gap-8 lg:col-span-7">
           <h2 className="display-md">Every project starts with a conversation.</h2>
           <div className="flex flex-wrap items-center gap-4">
