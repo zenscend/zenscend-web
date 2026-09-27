@@ -28,7 +28,7 @@ const services = [
     kicker: "Innovate",
     title: "Build",
     lede: "Turn an idea into working software.",
-    body: "Custom platforms, portals, apps and internal tools, designed from zero around the problem you need solved. Whatever it runs on, we build it.",
+    body: "Custom platforms, portals, apps and internal tools, designed from zero around the problem you need solved.",
     points: ["Custom software from scratch", "Web and mobile platforms", "Internal tools and dashboards"],
   },
   {
@@ -51,8 +51,8 @@ const services = [
 const steps = [
   {
     n: "01",
-    title: "Listen",
-    body: "A discovery meeting where we learn how your business runs and identify the real issue.",
+    title: "Discovery",
+    body: "We learn how your business runs and identify the real issue.",
     h: "md:h-60",
     skin: "bg-paper border border-r-0 border-b-0 border-rule-light",
     num: "text-label",
@@ -60,8 +60,8 @@ const steps = [
   },
   {
     n: "02",
-    title: "Map",
-    body: "A proposed solution in plain language, with clear milestones and a quote.",
+    title: "Proposal",
+    body: "The solution we recommend, in plain language, with clear milestones and a quote.",
     h: "md:h-80",
     skin: "bg-paper-2 border border-r-0 border-b-0 border-rule-light",
     num: "text-label",
@@ -69,8 +69,8 @@ const steps = [
   },
   {
     n: "03",
-    title: "Build",
-    body: "We deliver milestone by milestone, so you see progress and pay as it lands.",
+    title: "Milestones",
+    body: "We build milestone by milestone, so you see progress and pay as it lands.",
     h: "md:h-100",
     skin: "bg-ink text-bright",
     num: "text-dim",
@@ -78,7 +78,7 @@ const steps = [
   },
   {
     n: "04",
-    title: "Rise",
+    title: "Launch & support",
     body: "Launch, train your team, and stay on hand as the business grows.",
     h: "md:h-120",
     skin: "bg-accent text-on-accent",
@@ -111,7 +111,7 @@ export default function Home() {
             <p className="max-w-[560px] text-[19px]/[1.6] text-mute">
               Zenscend is a software partner for growing businesses. We build new
               products from zero, take MVPs to launch and beyond, and modernise the
-              systems you already run. Whatever it runs on, we make it work.
+              systems you already run.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-4">
@@ -119,7 +119,7 @@ export default function Home() {
               href="/contact"
               className="flex h-14 items-center rounded-sm bg-accent px-7 font-semibold text-on-accent transition-colors duration-200 hover:text-ink"
             >
-              Book a free consultation
+              Book a discovery meeting
             </Link>
             <Link
               href="#process"
@@ -258,6 +258,12 @@ export default function Home() {
             </div>
           ))}
         </div>
+        <Link
+          href="/services#process"
+          className="flex h-14 w-fit items-center transition-colors duration-200 hover:text-accent"
+        >
+          See the full process &nbsp;→
+        </Link>
       </section>
 
       {/* CTA */}
@@ -278,7 +284,7 @@ export default function Home() {
               href="/contact"
               className="flex h-14 items-center rounded-sm bg-ink px-7 font-semibold text-bright transition-colors duration-200 hover:bg-accent hover:text-ink"
             >
-              Book a free consultation
+              Book a discovery meeting
             </Link>
             <a
               href="https://wa.me/27645327596"
@@ -292,7 +298,7 @@ export default function Home() {
           <div className="flex flex-col gap-3 border-t border-rule-light pt-8 text-[15px] text-body md:flex-row md:gap-12">
             <span>info@zenscend.co</span>
             <span>Brooklyn, Pretoria</span>
-            <span>Working with teams in SA and abroad</span>
+            <span>Working with teams in South Africa and abroad</span>
           </div>
         </div>
       </section>

@@ -13,15 +13,19 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Zenscend",
+  title: {
+    default: "Zenscend — software partner for growing businesses",
+    template: "%s — Zenscend",
+  },
   description:
     "Zenscend is a software partner for growing businesses. We build new products from zero, take MVPs to launch and beyond, and modernise the systems you already run.",
   keywords:
-    "software development, custom software, MVP development, legacy modernization, internal tools, Pretoria, South Africa",
+    "software development, custom software, MVP development, legacy modernisation, internal tools, Pretoria, South Africa",
   icons: { icon: "/favicon.svg" },
   openGraph: {
-    title: "Zenscend",
-    description: "From first idea to MVP, and beyond.",
+    title: "Zenscend — software partner for growing businesses",
+    description:
+      "Zenscend is a software partner for growing businesses. We build new products from zero, take MVPs to launch and beyond, and modernise the systems you already run.",
     type: "website",
   },
 };
