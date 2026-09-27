@@ -2,46 +2,41 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Services: Zenscend",
+  title: "Services",
   description:
-    "Audits, optimisation and new builds. One team, whatever it runs on. New application builds, MVPs and scaling, system audits and optimisation.",
+    "New application builds, MVPs and scaling, and modernising the systems you already run. One team, whatever it runs on.",
 };
 
 const ways = [
   {
     n: "01 · INNOVATE",
-    title: "New application builds",
+    title: "Build",
     lede: "Software built from zero, around your problem.",
     body: "Web platforms, client portals, internal tools and apps. We design around how your business actually works, then build it to last.",
     gets: ["Working, tested software", "Documentation and handover", "Training for your team"],
   },
   {
     n: "02 · ELEVATE",
-    title: "MVPs and scaling",
+    title: "Launch & scale",
     lede: "Prove the idea, then grow it.",
     body: "A lean first version that puts the idea in front of real users quickly. When it works, we harden, extend and scale it without starting over.",
     gets: ["A launch-ready MVP", "A roadmap for what comes next", "A foundation built to scale"],
   },
   {
+    // Audits and optimisation together: the review tells you what to change,
+    // the work is changing it.
     n: "03 · STREAMLINE",
-    title: "System audits",
-    lede: "A clear picture of what you run.",
-    body: "We review your systems, data and processes, find where time and money leak, and tell you plainly what to keep, fix or replace.",
-    gets: ["A plain-language audit report", "Prioritised recommendations", "A milestone plan, if you want one"],
-  },
-  {
-    n: "04 · STREAMLINE",
-    title: "Optimisation",
-    lede: "Make what works, work better.",
-    body: "Speed, reliability, automation and integrations for the systems you already rely on, improved without disrupting the business.",
-    gets: ["Faster, more reliable systems", "Less manual, repeated work", "Tools that talk to each other"],
+    title: "Modernise",
+    lede: "Make what you already run work better.",
+    body: "We review your systems, data and processes and tell you plainly what to keep, fix or replace. Then we do the work: speed, reliability, automation and integrations, improved without disrupting the business.",
+    gets: ["A plain-language audit report", "Prioritised recommendations", "Faster, more reliable systems"],
   },
 ] as const;
 
 const routes = [
-  ["Nothing built yet?", "→ New application build"],
-  ["Built, but not yet proven?", "→ MVP and scaling"],
-  ["Running, but not keeping up?", "→ Audit, then optimise"],
+  ["Nothing built yet?", "→ Build"],
+  ["Built, but not yet proven?", "→ Launch & scale"],
+  ["Running, but not keeping up?", "→ Modernise"],
 ];
 
 // Five steps climbing 180→500, the same staircase motif as the home page.
@@ -49,7 +44,7 @@ const stages = [
   {
     n: "01",
     title: "You reach out",
-    body: "Tell us the problem in a few lines. We reply within 24 hours.",
+    body: "Tell us the problem in a few lines. We reply within one business day.",
     h: "md:h-45",
     skin: "border border-r-0 border-b-0 border-rule-light bg-paper",
     num: "text-label",
@@ -111,7 +106,7 @@ export default function Services() {
       <section className="grid grid-cols-1 gap-x-6 gap-y-10 bg-ink px-5 pt-20 pb-16 text-bright md:px-20 lg:grid-cols-12 lg:pt-28 lg:pb-24">
         <div className="eyebrow text-dim lg:col-span-12">Services</div>
         <h1 className="display lg:col-span-9">
-          Audits, optimisation and new builds.
+          New builds, audits and optimisation.
           <br />
           <span className="text-ghost">One team, whatever it runs on.</span>
         </h1>
@@ -125,7 +120,7 @@ export default function Services() {
       <section className="flex flex-col gap-12 px-5 py-20 md:px-20 lg:gap-16 lg:pt-32 lg:pb-28">
         <div className="grid grid-cols-1 gap-x-6 gap-y-6 lg:grid-cols-12">
           <div className="eyebrow text-label lg:col-span-5">01: What we do</div>
-          <h2 className="display-sm lg:col-span-7">Four ways in.</h2>
+          <h2 className="display-sm lg:col-span-7">Three ways in.</h2>
         </div>
 
         <div className="flex flex-col border-b border-rule-light">
@@ -178,7 +173,7 @@ export default function Services() {
       </section>
 
       {/* HOW A PROJECT RUNS */}
-      <section className="flex flex-col gap-12 border-t border-rule-white bg-white px-5 pt-20 md:px-20 lg:gap-[72px] lg:pt-32">
+      <section id="process" className="flex flex-col gap-12 border-t border-rule-white bg-white px-5 pt-20 md:px-20 lg:gap-[72px] lg:pt-32">
         <div className="grid grid-cols-1 gap-x-6 gap-y-6 lg:grid-cols-12">
           <div className="eyebrow text-label lg:col-span-5">02: How a project runs</div>
           <div className="flex flex-col gap-6 lg:col-span-7">
@@ -209,9 +204,10 @@ export default function Services() {
           <h2 className="display-sm">You pay as the work progresses.</h2>
           <p className="max-w-[600px] text-[19px]/[1.6] text-mute">
             Our quotes are split into milestones. Each has a clear deliverable, and
-            you generally pay milestone by milestone rather than for the whole
-            project at once. You always know what you&apos;re paying for, and what
-            comes next.
+            you pay per milestone rather than for the whole project up front. On
+            smaller pieces of work we&apos;ll sometimes quote a single fee, and
+            we&apos;ll say so in the proposal. You always know what you&apos;re
+            paying for, and what comes next.
           </p>
         </div>
 
@@ -246,6 +242,9 @@ export default function Services() {
               <span>{item}</span>
             </div>
           ))}
+        </div>
+        <div className="text-[15px]/[1.55] text-mute lg:col-span-7 lg:col-start-6">
+          Exactly what&apos;s included is set out in your proposal.
         </div>
       </section>
 

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 type State = "idle" | "sending" | "sent" | "error";
@@ -12,7 +13,7 @@ const starts = [
 
 const next = [
   [
-    "We reply within 24 hours",
+    "We reply within one business day",
     "A short note to confirm we understand the problem and set a time to talk.",
   ],
   [
@@ -129,7 +130,8 @@ export default function Contact() {
                 Thank you. That&apos;s step one.
               </div>
               <p className="text-[17px]/[1.6] text-body">
-                We&apos;ll reply within 24 hours to set up your discovery meeting.
+                We&apos;ll reply within one business day to set up your discovery
+                meeting.
               </p>
               <button
                 type="button"
@@ -233,10 +235,16 @@ export default function Contact() {
                   disabled={state === "sending"}
                   className="h-14 shrink-0 rounded-sm bg-accent px-8 font-semibold text-on-accent transition-colors duration-200 hover:text-ink disabled:opacity-60"
                 >
-                  {state === "sending" ? "Sending…" : "Send and book discovery"}
+                  {state === "sending" ? "Sending…" : "Book a discovery meeting"}
                 </button>
                 <span className="text-sm/[1.5] text-label">
-                  Everything you share stays confidential.
+                  Free, no obligation. We keep what you share confidential.{" "}
+                  <Link
+                    href="/privacy"
+                    className="whitespace-nowrap underline transition-colors duration-200 hover:text-ink"
+                  >
+                    Privacy policy
+                  </Link>
                 </span>
               </div>
             </form>
